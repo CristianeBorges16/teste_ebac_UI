@@ -1,4 +1,4 @@
-/// < reference types="cypress"/>
+/// <reference types="cypress"/>
 
 const LogPerfil = require ('../../fixtures/LoginPerfil.json')  // seleciona o arq com massa de dados
 
@@ -49,5 +49,10 @@ describe('Funcionalidade: Login', () => {
             cy.get('.woocommerce-form > .button').click()
             cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, cris.teste (não é cris.teste? Sair)')
         })
+    });
+
+    it.only('06-Deve fazer login com sucesso - usando Comandos Customizados', () => {
+        cy.Ctxlogin('cris.teste@teste.com.br', 'ebac-teste1!!!')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, cris.teste (não é cris.teste? Sair)')
     });
 });

@@ -1,4 +1,4 @@
-/// < reference types="cypress"/>
+/// <reference types="cypress"/>
 
 import { faker } from '@faker-js/faker';
 
@@ -55,6 +55,15 @@ describe('Funcionalidade: Cadastro', () => {
         cy.get('.form-row-last > label').type(sobrenome)
         // cy.wait(5000)   // 5sec = 5000 mili seconds
         cy.get('.woocommerce-Button').click()
+        cy.get('.woocommerce-message').should('contain' , 'Detalhes da conta modificados com sucesso.')
+    });
+
+    it.only('04-Deve executar cadastro com nomes x emails aleatórios mais corretos-usando faker e comandos custom', () => {
+        var nome = faker.person.firstName()
+        var sobrenome = faker.person.lastName()
+        var email = faker.internet.email(nome,sobrenome)  // email será montado com o nome e sobrenome sugeridos acima
+
+        cy.preCadastro(email,'fake123', nome, sobrenome)
         cy.get('.woocommerce-message').should('contain' , 'Detalhes da conta modificados com sucesso.')
     });
 });
