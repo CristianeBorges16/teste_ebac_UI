@@ -3,7 +3,7 @@
 describe('Funcionalidade: Produtos', () => {
 
     beforeEach(() => {
-        cy.visit ('http://lojaebac.ebaconline.art.br/produtos/')
+        cy.visit ('produtos')
     });
 
     it('01-Seleciona o primeiro produto', () => {
@@ -26,6 +26,14 @@ describe('Funcionalidade: Produtos', () => {
         .click()
         cy.get('#tab-title-description > a').should('contain' , 'Descrição')
     });
+
+    it('04-Seleciona produto por nome', () => {
+        cy.get('.block-inner')
+        cy.get('.product-block')
+            .contains('Aether Gym Pant')
+            .click()
+        cy.get('#tab-title-description > a').should('contain' , 'Descrição')
+    });    
 });
 
 

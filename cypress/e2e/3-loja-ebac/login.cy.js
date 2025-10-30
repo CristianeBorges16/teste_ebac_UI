@@ -1,9 +1,11 @@
 /// < reference types="cypress"/>
 
+const LogPerfil = require ('../../fixtures/LoginPerfil.json')  // seleciona o arq com massa de dados
+
 describe('Funcionalidade: Login', () => {
 
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+        cy.visit('minha-conta')
     });
 
     afterEach(() => {
@@ -25,11 +27,27 @@ describe('Funcionalidade: Login', () => {
         cy.get('.woocommerce-error').should('exist')  // apenas verifica se este campo passa a existir quando ocorre erro de user
     });
 
-        it('03-Deve inserir uma mensagem de erro ao inserir senha inválida', () => {
+    it('03-Deve inserir uma mensagem de erro ao inserir senha inválida', () => {
         cy.get ('#username').type('cris.teste@teste.com.br')
         cy.get('#password').type('teste1!!!')
         cy.get('.woocommerce-form > .button').click()        
         cy.get('.woocommerce-error > li').should('contain', 'A senha fornecida')
         cy.get('.woocommerce-error').should('exist')  // apenas verifica se este campo passa a existir quando ocorre erro de user
+    });
+
+    it('04-Deve fazer login com sucesso - usando massa de dados', () => {
+        cy.get ('#username').type(LogPerfil.usuario)
+        cy.get('#password').type(LogPerfil.senha)
+        cy.get('.woocommerce-form > .button').click()
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, cris.teste (não é cris.teste? Sair)')
+    });
+
+    it('05-Deve fazer login com sucesso - usando fixture', () => {
+        cy.fixture('LoginPerfil').then ( dados => {
+            cy.get ('#username').type(dados.usuario)
+            cy.get('#password').type(dados.senha, {log:false})  // log: false para não mostrar a senha
+            cy.get('.woocommerce-form > .button').click()
+            cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, cris.teste (não é cris.teste? Sair)')
+        })
     });
 });

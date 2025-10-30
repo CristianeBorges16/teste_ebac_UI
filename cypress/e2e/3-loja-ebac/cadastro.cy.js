@@ -5,7 +5,7 @@ import { faker } from '@faker-js/faker';
 describe('Funcionalidade: Cadastro', () => {
 
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')      
+        cy.visit('minha-conta')    
         });
     
     it('01-Deve executar cadastro com nomes aleatórios - faker', () => {
@@ -40,7 +40,7 @@ describe('Funcionalidade: Cadastro', () => {
         cy.get('.woocommerce-message').should('contain' , 'Detalhes da conta modificados com sucesso.')
     });
 
-    it.only('03-Deve executar cadastro com nomes x emails aleatórios mais corretos  - usando variáveis faker', () => {
+    it('03-Deve executar cadastro com nomes x emails aleatórios mais corretos  - usando variáveis faker', () => {
         var nome = faker.person.firstName()
         var sobrenome = faker.person.lastName()
         var email = faker.internet.email(nome,sobrenome)  // email será montado com o nome e sobrenome sugeridos acima
