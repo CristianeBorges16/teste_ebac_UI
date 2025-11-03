@@ -29,7 +29,7 @@
 
   Cypress.Commands.add('detalhesConta', (nome, sobrenome, nomecompleto) =>{
         cy.get('#account_first_name').type(nome)  // sem usar o clear ele remonta os nomes
-        cy.get('#account_last_name').clear().type(sobrenome)
+        cy.get('#account_last_name').clear().type(sobrenome) // usando o clear
         cy.get('#account_display_name').clear().type(nomecompleto)
         cy.get('.woocommerce-Button').click()
   })

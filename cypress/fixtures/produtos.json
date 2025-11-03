@@ -1,0 +1,22 @@
+[
+    {
+        "nomeProduto": "Apollo Running Short",
+        "tamanho": "36",
+        "cor": "black",
+        "quantidade": 3
+    },
+
+    {
+        "nomeProduto": "Ingrid Running Jacket",
+        "tamanho": "S",
+        "cor": "White",
+        "quantidade": 5
+    },
+
+    {
+        "nomeProduto": "Typhon Performance Fleece-lined Jacket",
+        "tamanho": "XL",
+        "cor": "Green",
+        "quantidade": 2
+    }
+]

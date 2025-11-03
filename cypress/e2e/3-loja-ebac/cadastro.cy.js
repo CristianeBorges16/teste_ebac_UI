@@ -66,4 +66,8 @@ describe('Funcionalidade: Cadastro', () => {
         cy.preCadastro(email,'fake123', nome, sobrenome)
         cy.get('.woocommerce-message').should('contain' , 'Detalhes da conta modificados com sucesso.')
     });
+
+    it ('teste novo', () => {
+        
+    })
 });

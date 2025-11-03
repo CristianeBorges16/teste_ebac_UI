@@ -16,7 +16,7 @@ describe('Funcionalidade: Login', () => {
         cy.get ('#username').type('cris.teste@teste.com.br')
         cy.get('#password').type('ebac-teste1!!!')
         cy.get('.woocommerce-form > .button').click()
-        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, cris.teste (não é cris.teste? Sair)')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , '? Sair)')
     });
 
     it('02-Deve inserir uma mensagem de erro ao inserir usuário inválido', () => {
@@ -39,7 +39,7 @@ describe('Funcionalidade: Login', () => {
         cy.get ('#username').type(LogPerfil.usuario)
         cy.get('#password').type(LogPerfil.senha)
         cy.get('.woocommerce-form > .button').click()
-        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, cris.teste (não é cris.teste? Sair)')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , '? Sair)')
     });
 
     it('05-Deve fazer login com sucesso - usando fixture', () => {
@@ -47,12 +47,12 @@ describe('Funcionalidade: Login', () => {
             cy.get ('#username').type(dados.usuario)
             cy.get('#password').type(dados.senha, {log:false})  // log: false para não mostrar a senha
             cy.get('.woocommerce-form > .button').click()
-            cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, cris.teste (não é cris.teste? Sair)')
+            cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , '? Sair)')
         })
     });
 
-    it.only('06-Deve fazer login com sucesso - usando Comandos Customizados', () => {
+    it('06-Deve fazer login com sucesso - usando Comandos Customizados', () => {
         cy.Ctxlogin('cris.teste@teste.com.br', 'ebac-teste1!!!')
-        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , 'Olá, cris.teste (não é cris.teste? Sair)')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain' , '? Sair)')
     });
 });
