@@ -79,14 +79,15 @@ describe('Funcionalidade: Produtos', () => {
 
     it.only('09 - Deve adicionar produto ao carrinho usando Massa de dados', () => {
         cy.fixture('produtos').then(dados => {
-            produtosPage.visitarProduto(dados[1].nomeProduto)
+            produtosPage.visitarProduto(dados[2].nomeProduto)
                 
             produtosPage.addProdutoCarrinho(
-                dados[1].tamanho,
-                dados[1].cor,
-                dados[1].quantidade)
+                dados[2].tamanho,
+                dados[2].cor,
+                dados[2].quantidade)
             
-                cy.get('.woocommerce-message').should('contain',dados[1].quantidade + ' × “' + dados[1].nomeProduto +'” foram adicionados no seu carrinho.') // mensagem completa
+                cy.get('.woocommerce-message').should('contain'
+                    ,dados[2].quantidade + ' × “' + dados[2].nomeProduto +'” foram adicionados no seu carrinho.') // mensagem completa
         })
     });
 });
